@@ -42,6 +42,27 @@ let map;
       commentWindow.open(map, commentMarker);
     });
 
+    // Picture Icon
+    const pictureIconUrl = 'https://cdn-icons-png.flaticon.com/512/2659/2659360.png';
+    const pictureIcon = {
+      url: pictureIconUrl,
+      scaledSize: new google.maps.Size(32, 32), // Adjust the size as needed
+    }
+    const pictureLocation = { lat: 60.168866, lng: 24.941902 }
+    pictureMarker = new google.maps.Marker({
+      position: pictureLocation,
+      map: map,
+      icon: pictureIcon
+    });
+
+    const picWindow = new google.maps.InfoWindow({
+      content: "<img class='marker-picture' src='https://i.ytimg.com/vi/4Ygw4pqGQ3c/maxresdefault.jpg' />",
+    });
+
+    pictureMarker.addListener("click", () => {
+        picWindow.open(map, pictureMarker);
+    });
+
     // Add a polyline with red and green segments
     const polylineRed = new google.maps.Polyline({
       path: [
@@ -104,12 +125,16 @@ let map;
       step: 1,
       // In the future, the value for the weather will come from selected forecast agency API
       weather: {
-        temperature: 20,
-        condition: 'Sunny',
+        temperature: -20,
+        condition: 'Snow storm',
         wind: 10,
         humidity: 50,
         sunrise: '06:00 AM',
-        sunset: '06:00 PM'
+        sunset: '06:00 PM',
+        background: 'https://i1.pickpik.com/photos/654/108/40/ice-stars-winter-snow-preview.jpg',
+        alert: true,
+        userPhoto: 'https://www.trvbox.com/wp-content/uploads/2019/02/helsinki-cathedral.jpg',
+        userName: 'theStudentHOAS'
       },
       currentQuestionIndex: 0,
       answers: ['', '', '']

@@ -1,12 +1,137 @@
-.extra-information-card .card-body {
-    min-height: 300px;
+html, body {
+    background-color: black;
+}
+
+.card.survey-card, .card.survey-card .notification {
+    background-color: #04439d;
+    color: white;
+}
+
+.gif-container {
+    width: 300px;
+    height: 300px;
+    overflow: hidden; /* Hide any overflow if the GIF is larger than the container */
+    border: 1px solid #ccc; /* Optional: Add a border for visual distinction */
+}
+
+.card.survey-card .card-header {
+    justify-content: center;
+
+}
+
+.card.survey-card .notification {
+    text-align: center;
+}
+
+.card.survey-card .notification div.buttons {
+    justify-content: center;
+}
+
+.card.survey-card .notification div.buttons button {
+    background-color: #f1403a;
+    border: none;
+    border-radius: 40px;
+    color: white;
+}
+
+.card.survey-card .notification div.buttons button:first-child {
+    background-color: #09ca56;
+}
+
+.photo-from-user .card-body {
+    min-height: 362px;
 }
 
 .card-body h2 {
     margin-bottom: 15px;
 }
 
+.card.weather-info {
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 240px;
+    position: relative;
+    border: none;
+}
+
+.card.weather-info h2 {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.card.weather-info h3 {
+    font-size: 50px;
+}
+
+.weather-alert {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    padding: 10px 20px;
+    color: white;
+    margin-bottom: 20px;
+    z-index: 3;
+}
+
+.weather-alert .alert-text{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.card.photo-from-user .user-photo {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    border: none;
+}
+
+.photo-from-user .user-name {
+    position: absolute;
+    bottom: 0;
+    text-align: unset;
+    font-size: 10px;
+    margin-bottom: 20px;
+}
+
+.photo-from-user .user-name p {
+    color: white;
+}
+
+.card.weather-info h2, .card.weather-info p, .card.weather-info h3 {
+    color: white;
+}
+  
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.card-body {
+    position: relative;
+    z-index: 2;
+}
+
 #map {
     height: 400px;
     width: 100%;
+}
+
+#map div:nth-child(2){
+}
+
+#map button:focus.gm-ui-hover-effect {
+    outline: none;
+}
+
+.marker-picture {
+    height: 100px;
+    width: auto;
 }

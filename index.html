@@ -16,14 +16,17 @@
 <div id="app" class="container mt-5">
   <div class="row">
     <!-- Left Column -->
-    <div class="col-md-9">
+    <div class="col-lg-8">
       <div id="map"></div>
       <br>
-      <div class="card">
+      <div class="card survey-card">
         <div class="card-header">
           Sweather survey - powered by Sweco
         </div>
         <div class="card-body">
+          <div class="gif-container">
+            <img src="img/woman-walking.gif" alt="Animated GIF">
+          </div>
           <div v-if="currentQuestionIndex === 0" class="notification">
             <h2>Is it raining?</h2>
             <div class="buttons">
@@ -61,29 +64,25 @@
     </div>
     
     <!-- Right Column -->
-    <div class="col-md-3">
-      <div class="card">
-        <div class="card-header">
-          Current Weather
-        </div>
+    <div class="col-lg-4">
+      <div class="card weather-info" :style="{ 'background-image': 'url(' + weather.background + ')' }">
+        <div class="overlay"></div> 
         <div class="card-body">
-          <!-- Weather Data -->
-          <p><strong>Temperature:</strong> {{ weather.temperature }}°C</p>
-          <p><strong>Condition:</strong> {{ weather.condition }}</p>
-          <p><strong>Wind:</strong> {{ weather.wind }} km/h</p>
-          <p><strong>Humidity:</strong> {{ weather.humidity }}%</p>
-          <p><strong>Sunrise:</strong> {{ weather.sunrise }}</p>
-          <p><strong>Sunset:</strong> {{ weather.sunset }}</p>
+          <h2>Weather Today</h2>
+          <h3>{{ weather.temperature }}°C</h3>
+          <div class="weather-alert">
+            <p class="alert-text">{{ weather.condition }}</p>
+          </div>
         </div>
       </div>
       <br>
-      <div class="card extra-information-card">
-        <div class="card-header">
-          Extra weather information
-        </div>
-        <div class="card-body">
-          <!-- Extra Weather Information -->
-          <p>Extra weather information goes here.</p>
+      <div class="card photo-from-user">
+        <div class="user-photo" :style="{ 'background-image': 'url(' + weather.userPhoto + ')' }">
+          <div class="card-body">
+            <div class="user-name">
+              <p class="alert-text">From: {{ weather.userName }}</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
