@@ -8,6 +8,7 @@
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://maps.googleapis.com/maps/api/js?&callback=initMap" async defer></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -89,145 +90,7 @@
   </div>
 </div>
 
-<style>
-.extra-information-card .card-body {
-  min-height: 300px;
-}
-
-.card-body h2 {
-  margin-bottom: 15px;
-}
-
-#map {
-  height: 400px;
-  width: 100%;
-}
-</style>
-
-<script>
-  let map;
-  let marker;
-
-  function initMap() {
-    // Define the URL of the custom icon
-    const iconUrl = 'https://cdn-icons-png.flaticon.com/512/7729/7729543.png';
-
-    // Create a custom icon
-    const customIcon = {
-      url: iconUrl,
-      scaledSize: new google.maps.Size(32, 32), // Adjust the size as needed
-    };
-
-    const helsinki = { lat: 60.1695, lng: 24.9354 };
-    map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 16,
-      center: helsinki,
-    });
-    marker = new google.maps.Marker({
-      position: helsinki,
-      map: map,
-      icon: customIcon
-    });
-
-    const infowindow = new google.maps.InfoWindow({
-      content: "<div>It's slippery</div>",
-    });
-
-    marker.addListener("click", () => {
-      infowindow.open(map, marker);
-    });
-
-    // Add a polyline with red and green segments
-    const polylineRed = new google.maps.Polyline({
-      path: [
-        { lat: 60.17088, lng: 24.93774 }, 
-        { lat: 60.17158, lng: 24.93931 }, 
-        { lat: 60.17116, lng: 24.94011 }, 
-        { lat: 60.17043, lng: 24.93908 }  
-      ],
-      geodesic: true,
-      strokeColor: "#FF0000", // Red color
-      strokeOpacity: 1.0,
-      strokeWeight: 2,
-      map: map,
-    });
-    // Add a polyline with red and green segments
-    const polylineGreen = new google.maps.Polyline({
-      path: [
-        { lat: 60.17088, lng: 24.93774 }, // Start point
-        { lat: 60.17158, lng: 24.93931 }, // Midpoint
-        { lat: 60.17043, lng: 24.93908 }  // End point
-      ],
-      geodesic: true,
-      strokeColor: "#31e931", // Green color
-      strokeOpacity: 1.0,
-      strokeWeight: 2,
-      map: map,
-    });
-
-    // Custom styling for the road nearby the marker
-    const roadStyle = [
-      {
-        featureType: "road",
-        elementType: "geometry",
-        stylers: [{ hue: "#00ff00" }, { saturation: -100 }],
-      },
-    ];
-
-    const mapType = new google.maps.StyledMapType(roadStyle, { name: "Road" });
-    map.mapTypes.set("road", mapType);
-    map.setMapTypeId("road");
-  }
-
-  new Vue({
-    el: '#app',
-    data: {
-      step: 1,
-      // In the future, the value for the weather will come from selected forecast agency API
-      weather: {
-        temperature: 20,
-        condition: 'Sunny',
-        wind: 10,
-        humidity: 50,
-        sunrise: '06:00 AM',
-        sunset: '06:00 PM'
-      },
-      currentQuestionIndex: 0,
-      answers: ['', '', '']
-
-    },
-    methods: {
-      nextStep() {
-        this.step++;
-      },
-      submitAnswers() {
-        // Logic to submit answers goes here
-      },
-      submit() {
-        // Handle submission here (e.g., send data to server)
-        console.log('Final Answers:', this.answers);
-      },
-      selectAnswer(answer) {
-        this.answers[this.currentQuestionIndex] = answer;
-        // Move to the next question if current answer is selected
-        if (this.answers[this.currentQuestionIndex] !== '') {
-          this.currentQuestionIndex++;
-        }
-      },
-    },
-    watch: {
-      answers: {
-        handler(newAnswers) {
-          // Move to the next question if current answer is selected
-          if (newAnswers[this.currentQuestionIndex] !== '') {
-            this.currentQuestionIndex++;
-          }
-        },
-        deep: true
-      }
-    }
-  });
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>

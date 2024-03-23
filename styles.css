@@ -1,0 +1,12 @@
+.extra-information-card .card-body {
+    min-height: 300px;
+}
+
+.card-body h2 {
+    margin-bottom: 15px;
+}
+
+#map {
+    height: 400px;
+    width: 100%;
+}
