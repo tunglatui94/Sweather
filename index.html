@@ -24,33 +24,27 @@
           Sweather survey - powered by Sweco
         </div>
         <div class="card-body">
-          <div class="gif-container">
-            <img src="img/woman-walking.gif" alt="Animated GIF">
-          </div>
           <div v-if="currentQuestionIndex === 0" class="notification">
-            <h2>Is it raining?</h2>
+            <h2>Did the weather delay your trip?</h2>
             <div class="buttons">
-              <button @click="selectAnswer('yes')" class="button">Yes</button>
-              <button @click="selectAnswer('no')" class="button">No</button>
+              <button @click="selectAnswer('yes delay')" class="button">Yes</button>
+              <button @click="selectAnswer('no delay')" class="button">No</button>
             </div>
           </div>
         
           <div v-else-if="currentQuestionIndex === 1" class="notification">
-            <h2>How do you react to rain?</h2>
+            <h2>Does this ice impair walking on your street?</h2>
             <div class="buttons">
-              <button v-if="answers[0] === 'yes'" @click="selectAnswer('take-umbrella')" class="button">Take an umbrella</button>
-              <button v-if="answers[0] === 'yes'" @click="selectAnswer('wait')" class="button">Wait for the rain to stop</button>
-              <button v-if="answers[0] === 'no'" @click="selectAnswer('enjoy-walk')" class="button">Enjoy the walk</button>
-              <button v-if="answers[0] === 'no'" @click="selectAnswer('carry-umbrella')" class="button">Carry an umbrella just in case</button>
+              <button @click="selectAnswer('yes impair')" class="button">Yes</button>
+              <button @click="selectAnswer('no impair')" class="button">No</button>
             </div>
           </div>
         
           <div v-else-if="currentQuestionIndex === 2" class="notification">
-            <h2>How much delay does the rain cause in your plans?</h2>
+            <h2>Is the weather like today's dangerous for you?</h2>
             <div class="buttons">
-              <button v-if="answers[1] === 'take-umbrella' || answers[1] === 'carry-umbrella'" @click="selectAnswer('some-delay'); submit()" class="button">Some delay</button>
-              <button v-if="answers[1] === 'wait'" @click="selectAnswer('significant-delay'); submit()" class="button">Significant delay</button>
-              <button v-if="answers[1] === 'enjoy-walk'" @click="selectAnswer('no-delay'); submit()" class="button">No delay</button>
+              <button @click="selectAnswer('yes dangerous'); submit()" class="button">Yes</button>
+              <button @click="selectAnswer('no dangerous'); submit()" class="button">No</button>
             </div>
           </div>
 
